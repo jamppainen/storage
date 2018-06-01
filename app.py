@@ -19,25 +19,29 @@ _UNAVAILABLE=Response(body='Service Unavailable', status_code=503, headers={'Con
 
 @app.authorizer(ttl_seconds=30)
 def jwt_auth(auth_request):
-    token = auth_request.token
-    decoded = auth.decode_jwt_token(token)
-    return AuthResponse(routes=['*'], principal_id=decoded['sub'])
+	token = auth_request.token
+	decoded = None
+	try:
+		decoded = auth.decode_jwt_token(token)
+	except jwt.exceptions.InvalidSignatureError as e:
+		return AuthResponse(routes=[''], principal_id=None)
+	return AuthResponse(routes=['*'], principal_id=decoded['sub'])
 
 @app.route('/v1/login', methods=['POST'])
 def login():
-    body = app.current_request.json_body
-    try:
-    	record = get_users_db().get_item(
-        	Key={'username': body['username']})['Item']
-    	jwt_token = auth.get_jwt_token(
-        	body['username'], body['password'], record)
-    except KeyError as e:
-    	raise UnauthorizedError("Bad credentials")
-    return {'token': jwt_token}
+	body = app.current_request.json_body
+	try:
+		record = get_users_db().get_item(
+			Key={'username': body['username']})['Item']
+		jwt_token = auth.get_jwt_token(
+			body['username'], body['password'], record)
+	except KeyError as e:
+		raise UnauthorizedError("Bad credentials")
+	return {'token': jwt_token}
 
 @app.route('/')
 def index():
-    return {'hello': 'world'}
+	return {'hello': 'world'}
 
 @app.route('/v1/storage', methods=['POST'], authorizer=jwt_auth, content_types=['application/json'])
 def create_storage():
@@ -99,31 +103,31 @@ def delete_storage(id):
 	return 'OK'
 
 def generate_random_error():
- 	if random.randint(0,2) == 0:
- 		return True
- 	return False
+	if random.randint(0,2) == 0:
+		return True
+	return False
 
 def get_app_db():
-    global _DB
-    if _DB is None:
-        _DB = db.StorageDB(
-        	boto3.resource('dynamodb').Table(
-                os.environ['APP_TABLE_NAME'])
-        	)
-    return _DB
+	global _DB
+	if _DB is None:
+		_DB = db.StorageDB(
+			boto3.resource('dynamodb').Table(
+				os.environ['APP_TABLE_NAME'])
+			)
+	return _DB
 	
 def get_users_db():
-    global _USER_DB
-    if _USER_DB is None:
-        _USER_DB = boto3.resource('dynamodb').Table(
-            os.environ['USERS_TABLE_NAME'])
-    return _USER_DB
+	global _USER_DB
+	if _USER_DB is None:
+		_USER_DB = boto3.resource('dynamodb').Table(
+			os.environ['USERS_TABLE_NAME'])
+	return _USER_DB
 
 def get_authorized_username(current_request):
-    return current_request.context['authorizer']['principalId']
+	return current_request.context['authorizer']['principalId']
 
 def get_hash(payload, salt=None):
-    if salt is None:
-        salt = os.urandom(16)
-    rounds = 100000
-    return hashlib.pbkdf2_hmac('sha256', payload, salt, rounds)
+	if salt is None:
+		salt = os.urandom(16)
+	rounds = 100000
+	return hashlib.pbkdf2_hmac('sha256', payload, salt, rounds)
