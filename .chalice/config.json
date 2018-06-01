@@ -1,0 +1,14 @@
+{
+  "stages": {
+    "dev": {
+      "environment_variables": {
+        "USERS_TABLE_NAME": "users-app-44d9442f-c9aa-48fb-850c-e4089dd427ad",
+        "APP_TABLE_NAME": "storage-app-30c72955-fabf-4535-876b-fb471e598f2f"
+      },
+      "autogen_policy": false,
+      "api_gateway_stage": "api"
+    }
+  },
+  "version": "2.0",
+  "app_name": "storage"
+}
