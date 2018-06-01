@@ -1,10 +1,11 @@
 # storage
-Simple rest API to store user data. Built with chalice. Uses AWS Lambda and DynamoDb.
-## Chalice:
+Simple rest API to store user data. Built with chalice. Uses AWS Lambda, API Gateway and DynamoDb.
+## Reading:
 https://aws.amazon.com/blogs/developer/build-and-deploy-a-serverless-rest-api-in-minutes-using-chalice/
 https://chalice.readthedocs.io/en/latest/quickstart.html
 https://chalice.readthedocs.io/en/latest/api.html
 http://chalice-workshop.readthedocs.io/en/latest/
+https://joarleymoraes.com/hassle-free-python-lambda-deployment/
 
 ## Deployment:
 chalice local
@@ -55,3 +56,7 @@ response: {"id": <id>, "data": <data element>}
 Delete storage:
 DELETE /v1/storage/{id}
 response: OK
+
+## ARNs
+Lambda: arn:aws:lambda:eu-central-1:419277593273:function:storage-dev
+

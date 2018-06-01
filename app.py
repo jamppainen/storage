@@ -8,10 +8,10 @@ import jwt
 
 from botocore.exceptions import ClientError
 from chalice import Chalice, AuthResponse, UnauthorizedError, NotFoundError, BadRequestError, Response
-from storagelib import auth, db
+from chalicelib import auth, db
 
 app = Chalice(app_name='storage')
-#app.debug = True
+app.debug = True
 
 _DB = None
 _USER_DB = None
