@@ -11,7 +11,7 @@ from chalice import Chalice, AuthResponse, UnauthorizedError, NotFoundError, Bad
 from chalicelib import auth, db
 
 app = Chalice(app_name='storage')
-app.debug = True
+#app.debug = True
 
 _DB = None
 _USER_DB = None
