@@ -1,33 +1,33 @@
 # storage
 Simple rest API to store user data. Built with chalice. Uses AWS Lambda and DynamoDb.
-##Chalice:
+## Chalice:
 https://aws.amazon.com/blogs/developer/build-and-deploy-a-serverless-rest-api-in-minutes-using-chalice/
 https://chalice.readthedocs.io/en/latest/quickstart.html
 https://chalice.readthedocs.io/en/latest/api.html
 http://chalice-workshop.readthedocs.io/en/latest/
 
-##Deployment:
+## Deployment:
 chalice local
 chalice deploy
 chalice delete --stage dev
 
-##DynamoDb tables:
+## DynamoDb tables:
 See .chalice/config.json for table names
 
-###Scan tables
+### Scan tables
 aws dynamodb scan --table-name storage-app-<uuid>
 aws dynamodb scan --table-name users-app-<uuid>
 
-###Delete item
+### Delete item
 aws dynamodb delete-item --table-name storage-app-<uuid> --key "{\"username\":{\"S\":\"tester\"},\"uid\":{\"S\":\"1\"}}"
 
-###Delete user
+### Delete user
 aws dynamodb delete-item --table-name users-app-<uuid> --key "{\"username\":{\"S\":\"tester\"}}"
 
-###Drop table:
+### Drop table:
 aws dynamodb delete-table storage-app-<uuid>
 
-##API specs:
+## API specs:
 Server base address:
 Username:
 Password:
