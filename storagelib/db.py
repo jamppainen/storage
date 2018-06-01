@@ -4,7 +4,7 @@ from boto3.dynamodb.conditions import Key
 DEFAULT_USERNAME = 'default'
 
 
-class FSTestDB(object):
+class BaseDB(object):
     def list_items(self):
         pass
 
@@ -20,7 +20,7 @@ class FSTestDB(object):
     def update_item(self, uid, data=None):
         pass
 
-class DynamoDBFSTest(FSTestDB):
+class StorageDB(BaseDB):
     def __init__(self, table_resource):
         self._table = table_resource
 

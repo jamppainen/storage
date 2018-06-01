@@ -10,7 +10,7 @@ from botocore.exceptions import ClientError
 from chalice import Chalice, AuthResponse, UnauthorizedError, NotFoundError, BadRequestError, Response
 from storagelib import auth, db
 
-app = Chalice(app_name='fstest')
+app = Chalice(app_name='storage')
 #app.debug = True
 
 _DB = None
@@ -106,7 +106,7 @@ def generate_random_error():
 def get_app_db():
     global _DB
     if _DB is None:
-        _DB = db.DynamoDBFSTest(
+        _DB = db.StorageDB(
         	boto3.resource('dynamodb').Table(
                 os.environ['APP_TABLE_NAME'])
         	)

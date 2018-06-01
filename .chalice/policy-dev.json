@@ -20,7 +20,7 @@
         "dynamodb:Query"
       ],
       "Resource": [
-        "arn:aws:dynamodb:*:*:table/fstest-app-*",
+        "arn:aws:dynamodb:*:*:table/storage-app-*",
         "arn:aws:dynamodb:*:*:table/users-app-*"
       ],
       "Effect": "Allow"
