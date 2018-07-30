@@ -59,4 +59,5 @@ response: OK
 
 ## ARNs
 Lambda: arn:aws:lambda:eu-central-1:419277593273:function:storage-dev
+Lambda (auth): arn:aws:lambda:eu-central-1:419277593273:function:storage-dev-jwt_auth
 
