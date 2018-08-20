@@ -1,34 +1,5 @@
 {
   "schema_version": "2.0",
-  "resources": [
-    {
-      "role_name": "storage-dev-api_handler",
-      "role_arn": "arn:aws:iam::419277593273:role/storage-dev-api_handler",
-      "name": "api_handler_role",
-      "resource_type": "iam_role"
-    },
-    {
-      "lambda_arn": "arn:aws:lambda:eu-central-1:419277593273:function:storage-dev",
-      "name": "api_handler",
-      "resource_type": "lambda_function"
-    },
-    {
-      "role_name": "storage-dev-jwt_auth",
-      "role_arn": "arn:aws:iam::419277593273:role/storage-dev-jwt_auth",
-      "name": "jwt_auth_role",
-      "resource_type": "iam_role"
-    },
-    {
-      "lambda_arn": "arn:aws:lambda:eu-central-1:419277593273:function:storage-dev-jwt_auth",
-      "name": "jwt_auth",
-      "resource_type": "lambda_function"
-    },
-    {
-      "name": "rest_api",
-      "rest_api_id": "nw1akgwgbk",
-      "rest_api_url": "https://nw1akgwgbk.execute-api.eu-central-1.amazonaws.com/api/",
-      "resource_type": "rest_api"
-    }
-  ],
+  "resources": [],
   "backend": "api"
 }
