@@ -13,7 +13,7 @@ chalice deploy
 chalice delete --stage dev
 
 ## DynamoDb tables:
-See .chalice/config.json for table names
+See .chalice/config.json for table names and uuid.
 
 ### Scan tables
 aws dynamodb scan --table-name storage-app-<uuid>
