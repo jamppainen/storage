@@ -12,6 +12,7 @@ chalice local
 chalice deploy  
 chalice delete --stage dev  
 
+
 ## DynamoDb tables:
 See .chalice/config.json for table names and uuid.
 
@@ -29,7 +30,7 @@ aws dynamodb delete-item --table-name users-app-<uuid> --key "{\"username\":{\"S
 aws dynamodb delete-table storage-app-<uuid>
 
 ## API specs:
-Server base address:  
+Server base address:  <Check from .chalice/deployed/dev.json>
 Username:  
 Password:  
 APIs with PUT and POST methods expect content type application/json  
